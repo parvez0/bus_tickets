@@ -1,0 +1,10 @@
+MONGODB:
+  # complete mongodb uri with authentication and arguments will be appended to uri as query parameters
+  URI: "mongodb://127.0.0.1:27017"
+  ARGUMENTS: ""
+  DATABASE: "tickets"
+  SEEDING: true
+JWT:
+  # in seconds, default 24 hours
+  EXPIRY_TIME: 86400
+  SECRET: "iLFwO0exwQTwJUBdgaGGRKt3T"

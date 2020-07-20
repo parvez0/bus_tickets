@@ -5,7 +5,7 @@ extends:
   - 'eslint:recommended'
   - 'plugin:node/recommended'
 parserOptions:
-  ecmaVersion: 11
+  ecmaVersion: 2020
   sourceType: module
 plugins:
   - import
@@ -15,19 +15,20 @@ plugins:
 globals:
   logger: 'writable'
   config: 'writable'
+  CustomError: 'writable'
 rules:
   accessor-pairs: error
   array-bracket-newline: error
   array-bracket-spacing: error
   array-callback-return: error
-  array-element-newline: error
+  array-element-newline: off
   arrow-body-style: error
   arrow-parens: error
   arrow-spacing: error
   block-scoped-var: error
   block-spacing: error
   brace-style: error
-  callback-return: error
+  callback-return: off
   camelcase: error
   capitalized-comments:
     - error
@@ -42,7 +43,7 @@ rules:
   complexity: error
   computed-property-spacing: error
   no-case-declarations: off
-  consistent-return: error
+  consistent-return: off
   consistent-this: error
   curly: error
   default-case: error
@@ -62,7 +63,7 @@ rules:
   generator-star-spacing: error
   global-require: error
   grouped-accessor-pairs: error
-  guard-for-in: error
+  guard-for-in: off
   handle-callback-err: error
   id-blacklist: error
   id-denylist: error
@@ -93,11 +94,11 @@ rules:
   max-statements-per-line: ['error', { 'max': 2 }]
   multiline-comment-style: error
   new-parens: error
-  newline-before-return: error
+  newline-before-return: off
   newline-per-chained-call: error
   no-alert: error
   no-array-constructor: error
-  no-await-in-loop: error
+  no-await-in-loop: off
   no-bitwise: error
   no-buffer-constructor: error
   no-caller: error
@@ -170,7 +171,7 @@ rules:
   no-trailing-spaces: error
   no-undef-init: error
   no-undefined: error
-  no-underscore-dangle: error
+  no-underscore-dangle: off
   no-unmodified-loop-condition: error
   no-unneeded-ternary: error
   no-unreachable-loop: error
@@ -192,7 +193,7 @@ rules:
   object-curly-spacing:
     - error
     - always
-  object-property-newline: error
+  object-property-newline: off
   object-shorthand: error
   one-var: 'off'
   one-var-declaration-per-line: error
@@ -208,7 +209,7 @@ rules:
   prefer-numeric-literals: error
   prefer-object-spread: error
   prefer-promise-reject-errors: error
-  prefer-reflect: error
+  prefer-reflect: off
   prefer-regex-literals: error
   prefer-rest-params: error
   prefer-spread: error
@@ -221,7 +222,7 @@ rules:
   require-atomic-updates: error
   require-await: error
   require-jsdoc: error
-  require-unicode-regexp: error
+  require-unicode-regexp: off
   rest-spread-spacing: error
   semi: error
   semi-spacing: error
@@ -229,7 +230,7 @@ rules:
     - error
     - last
   sort-imports: error
-  sort-keys: error
+  sort-keys: off
   sort-vars: error
   space-before-blocks: error
   space-before-function-paren: error
@@ -263,3 +264,4 @@ rules:
   node/prefer-global/url: ["error", "always"]
   node/prefer-promises/dns: "error"
   node/prefer-promises/fs: "error"
+  node/no-unsupported-features/es-syntax: off

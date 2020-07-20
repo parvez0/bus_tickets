@@ -25,6 +25,12 @@ const deepFreeze = (o) => {
  */
 global.logger = deepFreeze(require('../logger'));
 global.config = deepFreeze(require('../config.js'));
+global.CustomError = deepFreeze(require('../middlewares/customErrorMessage'));
+
+/**
+ * importing mongodb seeds file for populating initial values
+ */
+require('../db-seeds/seeds')();
 
 /**
  * module dependencies.
