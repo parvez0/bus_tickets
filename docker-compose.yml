@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - "CONFIG__MONGODB__URI=http://mongodb:27017"
+      - "CONFIG__MONGODB__URI=mongodb://mongodb:27017"
 
   mongodb:
     image: mongo

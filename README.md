@@ -12,7 +12,7 @@ Start the application using the following command
 For a containerised solution run the following commands
      
      docker pull grokkertech/bus_tickets:latest
-     docker run -p 3000:3000 -e CONFIG__MONGODB__URI=http://mongodb:27017 -e CONFIG__MONGODB__SEEDING=true  grokkertech/bus_tickets:latest
+     docker run -p 3000:3000 -e CONFIG__MONGODB__URI=mongodb://mongodb:27017 -e CONFIG__MONGODB__SEEDING=true  grokkertech/bus_tickets:latest
      
 For a complete deployment with database please use the docker-compose file present in the project
 
@@ -34,7 +34,7 @@ MongoDb (no-sql) data-base was used for storing all the required data, you can f
 ### Config file
 You can provide the config from environment as well as from a yaml file, take a look at config.yml file in the project for environment variable use the following format
 
-    CONFIG__MONGODB__URI=http://mongodb:27017
+    CONFIG__MONGODB__URI=mongodb://mongodb:27017
     CONFIG__MONGODB__ARGUMENTS=authDatabase=admin
     CONFIG__JWT__EXPIRY_TIME=500
     
