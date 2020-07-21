@@ -10,4 +10,4 @@ ENV CONFIG_FILE_PATH='/app/config.yml'
 ENV PORT=3000
 ENV LOGGER_LOG_LEVEL='info'
 
-CMD ['node', 'bin/www']
+CMD ["node", "bin/www"]
