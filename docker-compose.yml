@@ -1,10 +1,13 @@
-version: '3.2'
+version: '3.8'
 
 services:
   bus_tickets:
     image: grokkertech/bus_tickets
     ports:
       - "3000:3000"
+    environment:
+      - "CONFIG__MONGODB__URI=http://mongodb:27017"
+
   mongodb:
     image: mongo
     ports:
