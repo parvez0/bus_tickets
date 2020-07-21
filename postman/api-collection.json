@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "7d7c2fe7-7a81-44a4-83f3-6a125f2f88c6",
+		"name": "Tickets",
+		"description": "Bus tickets api collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User-Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						},
+						"description": "Logout of the session"
+					},
+					"response": []
+				},
+				{
+					"name": "User-Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/profile",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"profile"
+							]
+						},
+						"description": "returns the current user profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Book-Tickets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"busNumber\": \"KA12DE3432\",\n    \"seatNumbers\": [\"A1\", \"A8\", \"B3\", \"C4\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/user/book-tickets",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"book-tickets"
+							]
+						},
+						"description": "You can book multiple tickets at once using this api"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch-Booked-Tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/booked-tickets",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"booked-tickets"
+							]
+						},
+						"description": "Api will return a list of tickets booked by the current user"
+					},
+					"response": []
+				},
+				{
+					"name": "Ticket-Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/user/booked-ticket-status/5f1474086829fdc4932826ba",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"user",
+								"booked-ticket-status",
+								"5f1474086829fdc4932826ba"
+							]
+						},
+						"description": "Fetch ticket status by ticket Id"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Common",
+			"item": [
+				{
+					"name": "Sing-Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Syed Parvez\",\n    \"email\": \"parvez@tickets.com\",\n    \"number\": \"9876543211\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/sign-up",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"sign-up"
+							]
+						},
+						"description": "User sign up for booking the tickets"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"usernameOrEmail\": \"admin@tech.com\",\n    \"password\": \"pa$$word\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Login into the platform "
+					},
+					"response": []
+				},
+				{
+					"name": "Bus-List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/buses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"buses"
+							],
+							"query": [
+								{
+									"key": "source",
+									"value": "banalore",
+									"disabled": true
+								},
+								{
+									"key": "destination",
+									"value": "hyderabad",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Fetch buses list provides a params query to filter based on route"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch-Seats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/seats/KA12DE3432",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"seats",
+								"KA12DE3432"
+							]
+						},
+						"description": "Fetch all seats"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Add-User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"parvez addmin\",\n    \"email\": \"parvez@admidn.com\",\n    \"number\": 8974543211,\n    \"password\": \"itdtr\",\n    \"isAdmin\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/admin/add-user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								"add-user"
+							]
+						},
+						"description": "You can add admin or simple user from backend using this api"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset-Tickets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"busNumber\": \"KA12DE3432\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/admin/reset-tickets",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								"reset-tickets"
+							]
+						},
+						"description": "You can reset the tickets to it's initial stage for rebooking of the seats again"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch-User-With-Tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/admin/bookings-by-bus/KA12DE3432",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								"bookings-by-bus",
+								"KA12DE3432"
+							]
+						},
+						"description": "Give you a list of all the users who have booked a ticket for the given bus with the user info, seat info and ticket id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete-User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/admin/delete-user/5f16d381870982e9dd52a505",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"admin",
+								"delete-user",
+								"5f16d381870982e9dd52a505"
+							]
+						},
+						"description": "Delete user by user id"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{BEARER_TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"id": "9e2c40d6-137e-4b89-98b1-73561ece3750",
+			"key": "BEARER_ROKEN",
+			"value": ""
+		},
+		{
+			"id": "b1c430aa-82c2-45ad-bc59-f572940efb9c",
+			"key": "URL",
+			"value": "http://localhost:3000"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
