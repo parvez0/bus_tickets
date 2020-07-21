@@ -2,7 +2,7 @@
 Backend for booking bus tickets
 
 ### INFO
-A simple Node.js and MongoDB backend application for booking bus tickets with registration and login functionality. It also provides an admin user with different role associated with it for resetting the approving the ticket and resetting the settings back to original. Please use the following link to try out the api https://tickets.parvez.tech
+A simple Node.js and MongoDB backend application for booking bus tickets with registration and login functionality. It also provides an admin user with different role associated with it for resetting the approving the ticket and resetting the settings back to original. Please use the following link to try out the api https://parvez.tech
 
 ### Usage
 Start the application using the following command
