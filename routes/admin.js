@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { addUser, resetTickets, fetchAllBookingsByBus } = require('../models/admin');
+const { addUser, resetTickets, fetchAllBookingsByBus, deleteUser } = require('../models/admin');
 
 router.post('/add-user', async (req, res) => {
     try {
@@ -36,6 +36,19 @@ router.get('/bookings-by-bus/:busNumber', async (req, res) => {
         }
         const bookings = await fetchAllBookingsByBus({ busNumber });
         return res.publish(true, 'Success', { bookings }, 200);
+    } catch (e) {
+        return res.publish(false, 'Failed', { message: e.message }, e.statusCode());
+    }
+});
+
+router.delete('/delete-user/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        if (!userId) {
+            return res.publish(false, 'Request body malformed', { message: 'One or more required parameters not provided' }, 400);
+        }
+        await deleteUser(userId);
+        return res.publish(true, 'Success', { message: 'User deleted successfully' });
     } catch (e) {
         return res.publish(false, 'Failed', { message: e.message }, e.statusCode());
     }

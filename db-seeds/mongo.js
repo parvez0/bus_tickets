@@ -75,6 +75,7 @@ const sessionSchema = new Schema({
     token: { type: String, required: true },
     ip: { type: String },
     device: { type: String },
+    active: { type: Boolean, default: true, required: true },
     createdDate: { type: Date, default: Date.now() },
     updatedDate: { type: Date, default: Date.now() }
 });

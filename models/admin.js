@@ -1,4 +1,4 @@
-const { Users, Seats, Bookings, Buses } = require('../db-seeds/mongo');
+const { Users, Seats, Bookings, Buses, Session } = require('../db-seeds/mongo');
 
 const addUser = async ({ fullName, email, number, password, isAdmin }) => {
     try {
@@ -58,11 +58,10 @@ const fetchAllBookingsByBus = async ({ busNumber }) => {
         const result = [];
         for (let i = 0; i < bookings.length; i++) {
             const { _id, user, seat } = bookings[i]._doc;
-            delete user._doc._id;
-            delete user._doc.saltToken;
-            delete user._doc.password;
+            const userId = user._doc._id;
+            const { email, fullName } = user._doc;
             delete seat._doc._id;
-            result.push({ ticketId: _id, ...user._doc, ...seat._doc });
+            result.push({ ticketId: _id, email, fullName, userId, ...seat._doc });
         }
         return result;
     } catch (e) {
@@ -71,9 +70,25 @@ const fetchAllBookingsByBus = async ({ busNumber }) => {
     }
 };
 
+const deleteUser = async (userId) => {
+    try {
+        const resp = await Users.deleteOne({ _id: userId });
+        if (resp && resp.deletedCount === 0) {
+            return Promise.reject(new CustomError('User not found', 404));
+        }
+        const date = new Date();
+        date.setDate(date.getDate() - 1);
+        await Session.updateMany({ userId, createdDate: { $gte: date } }, { active: false });
+    } catch (e) {
+        logger.error(`Failed to delete user -${userId} - `, e);
+        return Promise.reject(new CustomError('Failed to delete user', 404));
+    }
+};
+
 module.exports = {
     addUser,
     resetTickets,
     updateBookingStatus,
-    fetchAllBookingsByBus
+    fetchAllBookingsByBus,
+    deleteUser
 };

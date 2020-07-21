@@ -7,6 +7,7 @@ const { Users, Buses, Seats, Bookings, mongoose } = require('../db-seeds/mongo')
 const profile = async (userId) => {
     try {
         const userDetails = await Users.findOne({ _id: userId });
+        userDetails._doc.userId = userDetails._doc._id;
         delete userDetails._doc._id;
         delete userDetails._doc.saltToken;
         delete userDetails._doc.password;

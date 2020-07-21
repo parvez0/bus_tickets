@@ -1,6 +1,8 @@
 process.env.LOGGER_LOG_LEVEL = 'ERROR';
 global.logger = require('../logger');
 global.config = require('../config');
+global.CustomError = require('../middlewares/customErrorMessage');
+
 const app = require('../app');
 const supertest = require('supertest');
 const client = supertest(app);
