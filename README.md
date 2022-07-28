@@ -7,7 +7,9 @@ A simple Node.js and MongoDB backend application for booking bus tickets with re
 ### Usage
 Start the application using the following command
     
-    npm start or node bin/www
+    npm start 
+    or    
+    node bin/www
 #### Docker
 For a containerised solution run the following commands
      
